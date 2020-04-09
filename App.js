@@ -11,6 +11,12 @@ export default function App() {
 				},
 			},
 		},
+		sources: {
+			simple: {
+				type: 'config',
+				value: 'Some data from a source!',
+			},
+		},
 	});
 
 	return <Declair {...{
@@ -20,9 +26,13 @@ export default function App() {
 		items: {
 			child: {
 				items: {
-					message: {
+					embedded: {
 						type: 'text',
 						data: 'Some text as embedded data!',
+					},
+					source: {
+						type: 'text',
+						source: 'simple',
 					}
 				},
 			},
@@ -48,7 +58,8 @@ const typeStyles = StyleSheet.create({
 const styles = StyleSheet.create({
   element: {
 		borderColor: '#f00',
-		borderWidth: 4,
+		borderWidth: 1,
+		margin: 5,
 	},
 	text: {
 		fontSize: 10,
