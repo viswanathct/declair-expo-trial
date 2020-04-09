@@ -1,10 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
-import native from "declair/native";
+import { StyleSheet } from 'react-native';
+import declair from "declair/quick";
 
 export default function App() {
-	const Declair = native({
-		providers: {},
+	const Declair = declair({
 		types: {
 			element: {
 				config: {
