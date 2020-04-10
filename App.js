@@ -2,8 +2,14 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import declair from "declair/quick";
 
+/* Data */
+const messages = ['\\', '|', '/', '--'];
+
+/* State */
+let i = 0;
+
 export default function App() {
-	const Declair = declair({
+	const { Root, sources } = declair({
 		types: {
 			element: {
 				config: {
@@ -14,12 +20,16 @@ export default function App() {
 		sources: {
 			simple: {
 				type: 'config',
-				value: 'Some data from a source!',
+				value: messages[i],
 			},
 		},
 	});
 
-	return <Declair {...{
+	setInterval(() => {
+		sources.simple.update(messages[i++ % 4]);
+	}, 200);
+
+	return <Root {...{
 		data: {
 			message: 'Some text passed as data from the parent!',
 		},
