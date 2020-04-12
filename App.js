@@ -8,28 +8,44 @@ const messages = ['\\', '|', '/', '--'];
 /* State */
 let i = 0;
 
-export default function App() {
-	const { Root, sources } = declair({
-		types: {
-			element: {
-				config: {
-					style: typeStyles.element,
-				},
+/* Config */
+const typeStyles = StyleSheet.create({
+  element: {
+		backgroundColor: '#ddd',
+		borderWidth: 1,
+		alignItems: 'center',
+		flex: 1,
+		flexDirection: 'column',
+		justifyContent: 'center',
+	},
+});
+
+const styles = StyleSheet.create({
+  element: {
+		borderColor: '#f00',
+		borderWidth: 1,
+		margin: 5,
+	},
+	text: {
+		fontSize: 10,
+  },
+});
+
+const config = {
+	types: {
+		element: {
+			config: {
+				style: typeStyles.element,
 			},
 		},
-		sources: {
-			simple: {
-				type: 'config',
-				value: messages[i],
-			},
+	},
+	sources: {
+		simple: {
+			type: 'config',
+			value: messages[i],
 		},
-	});
-
-	setInterval(() => {
-		sources.simple.update(messages[i++ % 4]);
-	}, 200);
-
-	return <Root {...{
+	},
+	structure: {
 		data: {
 			message: 'Some text passed as data from the parent!',
 		},
@@ -51,27 +67,15 @@ export default function App() {
 			}
 		},
 		style: styles.element,
-	}}/>
-}
+	}
+};
 
-const typeStyles = StyleSheet.create({
-  element: {
-		backgroundColor: '#ddd',
-		borderWidth: 4,
-		alignItems: 'center',
-		flex: 1,
-		flexDirection: 'column',
-		justifyContent: 'center',
-	},
-});
+export default function App() {
+	const { structure: Root, sources } = declair(config);
 
-const styles = StyleSheet.create({
-  element: {
-		borderColor: '#f00',
-		borderWidth: 1,
-		margin: 5,
-	},
-	text: {
-		fontSize: 10,
-  },
-});
+	setInterval(() => {
+		sources.simple.update(messages[i++ % 4]);
+	}, 200);
+
+	return <Root/>
+};
