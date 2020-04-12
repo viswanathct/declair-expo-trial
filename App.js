@@ -1,5 +1,4 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import declair from "declair/quick";
 
 /* Data */
@@ -9,33 +8,21 @@ const messages = ['\\', '|', '/', '--'];
 let i = 0;
 
 /* Config */
-const typeStyles = StyleSheet.create({
-  element: {
-		backgroundColor: '#ddd',
-		borderWidth: 1,
-		alignItems: 'center',
-		flex: 1,
-		flexDirection: 'column',
-		justifyContent: 'center',
-	},
-});
-
-const styles = StyleSheet.create({
-  element: {
-		borderColor: '#f00',
-		borderWidth: 1,
-		margin: 5,
-	},
-	text: {
-		fontSize: 10,
-  },
-});
-
 const config = {
 	types: {
 		element: {
 			config: {
-				style: typeStyles.element,
+				style: {
+					backgroundColor: '#ddd',
+					borderWidth: 2,
+				},
+			},
+		},
+		text: {
+			config: {
+				style: {
+					fontSize: 20,
+				},
 			},
 		},
 	},
@@ -50,7 +37,14 @@ const config = {
 			message: 'Some text passed as data from the parent!',
 		},
 		items: {
+			message: {
+				type: 'text',
+			},
 			child: {
+				style: {
+					borderColor: '#f00',
+					margin: 5,
+				},
 				items: {
 					embedded: {
 						type: 'text',
@@ -62,11 +56,7 @@ const config = {
 					}
 				},
 			},
-			message: {
-				type: 'text',
-			}
 		},
-		style: styles.element,
 	}
 };
 
