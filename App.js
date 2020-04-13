@@ -11,18 +11,14 @@ let i = 0;
 const config = {
 	types: {
 		element: {
-			config: {
-				style: {
-					backgroundColor: '#ddd',
-					borderWidth: 2,
-				},
+			style: {
+				backgroundColor: '#ddd',
+				borderWidth: 5,
 			},
 		},
 		text: {
-			config: {
-				style: {
-					fontSize: 20,
-				},
+			style: {
+				fontSize: 12,
 			},
 		},
 	},
@@ -35,6 +31,9 @@ const config = {
 	structure: {
 		data: {
 			message: 'Some text passed as data from the parent!',
+		},
+		style: {
+			borderWidth: 3,
 		},
 		items: {
 			message: {
@@ -53,6 +52,9 @@ const config = {
 					source: {
 						type: 'text',
 						source: 'simple',
+						style: {
+							fontSize: 100,
+						},
 					}
 				},
 			},
