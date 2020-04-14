@@ -8,7 +8,7 @@ let i = 0;
 const structures = {
 	flat: {
 		type: 'text',
-		source: 'simple',
+		data: 'simple',
 	},
 	nested: {
 		data: {
@@ -33,7 +33,7 @@ const structures = {
 					},
 					source: {
 						type: 'text',
-						source: 'simple',
+						data: 'simple',
 						style: {
 							fontSize: 100,
 						},
@@ -87,7 +87,7 @@ const perfApp = (count=1000) => {
 	const embedRoot = config.structure.items.child.items;
 	const childConfig = {
 		type: 'text',
-		source: 'simple',
+		data: 'simple',
 		style: {
 			fontSize: 100,
 		},
