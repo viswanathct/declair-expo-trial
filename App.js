@@ -59,17 +59,49 @@ const config = {
 	},
 };
 
-const devApp = () => {
-	const { root: Root, sources } = declair(config);
-
+const initUpdater = (sources) => {
+	sources.simple.update(i++);
 	setInterval(() => {
 		sources.simple.update(i++);
 	}, 1000);
+}
+
+const devApp = () => {
+	const { root: Root, sources } = declair(config);
+
+	initUpdater(sources);
 
 	return <Root/>;
 }
 
+const perfApp = (count=1000) => {
+	const embedRoot = config.structure.items.child.items;
+	const childConfig = {
+		type: 'text',
+		source: 'simple',
+		style: {
+			fontSize: 100,
+		},
+	};
+
+	for(let i=0; i< count; i++)
+		embedRoot[`embedding${i}`] = childConfig;
+
+	const start = performance.now();
+	const { root: Root, sources } = declair(config);
+
+	console.log('Config', performance.now() - start);
+
+	initUpdater(sources);
+
+	const root = <Root/>;
+
+	console.log('Rendering', performance.now() - start);
+
+	return root;
+}
+
 
 export default function App() {
-	return devApp();
+	return perfApp();
 };
