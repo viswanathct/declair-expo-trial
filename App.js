@@ -1,9 +1,6 @@
 import React from 'react';
 import declair from "declair/quick";
 
-/* Data */
-const messages = ['\\', '|', '/', '--'];
-
 /* State */
 let i = 0;
 
@@ -25,7 +22,7 @@ const config = {
 	sources: {
 		simple: {
 			type: 'config',
-			value: messages[i],
+			value: i,
 		},
 	},
 	structure: {
@@ -55,19 +52,24 @@ const config = {
 						style: {
 							fontSize: 100,
 						},
-					}
+					},
 				},
 			},
 		},
-	}
+	},
 };
 
-export default function App() {
-	const { structure: Root, sources } = declair(config);
+const devApp = () => {
+	const { root: Root, sources } = declair(config);
 
 	setInterval(() => {
-		sources.simple.update(messages[i++ % 4]);
-	}, 200);
+		sources.simple.update(i++);
+	}, 1000);
 
-	return <Root/>
+	return <Root/>;
+}
+
+
+export default function App() {
+	return devApp();
 };
