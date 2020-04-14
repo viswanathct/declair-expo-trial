@@ -1,14 +1,27 @@
 import React from 'react';
-import declair from "declair/quick";
+import declair from 'declair/quick';
 
 /* State */
 let i = 0;
 
 /* Config */
+const colors = ['#800', '#080', '#008'];
+const source = {
+	type: 'text',
+	data: 'timer',
+	style: {
+		color: 'color',
+		fontSize: 100,
+	},
+};
 const structures = {
 	flat: {
 		type: 'text',
-		data: 'simple',
+		data: 'timer',
+		style: {
+			color: 'color',
+			fontSize: 100,
+		},
 	},
 	nested: {
 		data: {
@@ -30,21 +43,18 @@ const structures = {
 					embedded: {
 						type: 'text',
 						data: 'Some text as embedded data!',
-					},
-					source: {
-						type: 'text',
-						data: 'simple',
 						style: {
-							fontSize: 100,
+							fontSize: 12,
 						},
 					},
+					source: source,
 				},
 			},
 		},
 	},
 }
 
-const getConfig = (type) => ({
+const getConfig = (type='nested') => ({
 	types: {
 		element: {
 			style: {
@@ -59,25 +69,32 @@ const getConfig = (type) => ({
 		},
 	},
 	sources: {
-		simple: {
+		timer: {
 			type: 'config',
 			value: i,
+		},
+		color: {
+			type: 'config',
+			value: colors[i],
 		},
 	},
 	structure: structures[type],
 });
 
-const initUpdater = (sources) => {
-	sources.simple.update(i++);
+const initUpdater = (sources, delay=1000) => {
+	sources.timer.update(i++);
+	sources.color.update(colors[i % colors.length]);
+
 	setInterval(() => {
-		sources.simple.update(i++);
-	}, 1000);
+		sources.timer.update(i++);
+		sources.color.update(colors[i % colors.length]);
+	}, delay);
 }
 
-const devApp = (type='nested') => {
+const devApp = (type='nested', interval=1000) => {
 	const { root: Root, sources } = declair(getConfig(type));
 
-	initUpdater(sources);
+	initUpdater(sources, interval);
 
 	return <Root/>;
 }
@@ -85,13 +102,7 @@ const devApp = (type='nested') => {
 const perfApp = (count=1000) => {
 	const config = getConfig();
 	const embedRoot = config.structure.items.child.items;
-	const childConfig = {
-		type: 'text',
-		data: 'simple',
-		style: {
-			fontSize: 100,
-		},
-	};
+	const childConfig = source;
 
 	for(let i=0; i< count; i++)
 		embedRoot[`embedding${i}`] = childConfig;
