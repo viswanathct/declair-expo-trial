@@ -5,27 +5,12 @@ import declair from "declair/quick";
 let i = 0;
 
 /* Config */
-const config = {
-	types: {
-		element: {
-			style: {
-				backgroundColor: '#ddd',
-				borderWidth: 5,
-			},
-		},
-		text: {
-			style: {
-				fontSize: 12,
-			},
-		},
+const structures = {
+	flat: {
+		type: 'text',
+		source: 'simple',
 	},
-	sources: {
-		simple: {
-			type: 'config',
-			value: i,
-		},
-	},
-	structure: {
+	nested: {
 		data: {
 			message: 'Some text passed as data from the parent!',
 		},
@@ -57,7 +42,30 @@ const config = {
 			},
 		},
 	},
-};
+}
+
+const getConfig = (type) => ({
+	types: {
+		element: {
+			style: {
+				backgroundColor: '#ddd',
+				borderWidth: 5,
+			},
+		},
+		text: {
+			style: {
+				fontSize: 12,
+			},
+		},
+	},
+	sources: {
+		simple: {
+			type: 'config',
+			value: i,
+		},
+	},
+	structure: structures[type],
+});
 
 const initUpdater = (sources) => {
 	sources.simple.update(i++);
@@ -66,8 +74,8 @@ const initUpdater = (sources) => {
 	}, 1000);
 }
 
-const devApp = () => {
-	const { root: Root, sources } = declair(config);
+const devApp = (type='nested') => {
+	const { root: Root, sources } = declair(getConfig(type));
 
 	initUpdater(sources);
 
@@ -75,6 +83,7 @@ const devApp = () => {
 }
 
 const perfApp = (count=1000) => {
+	const config = getConfig();
 	const embedRoot = config.structure.items.child.items;
 	const childConfig = {
 		type: 'text',
@@ -101,7 +110,6 @@ const perfApp = (count=1000) => {
 	return root;
 }
 
-
 export default function App() {
-	return perfApp();
+	return devApp();
 };
