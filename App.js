@@ -3,6 +3,11 @@ import declair from 'declair/quick';
 
 /* State */
 let i = 0;
+let logLevel = 0;
+
+/* Helpers */
+const debug = (...args) =>
+	logLevel < 1 && console.log(...args)
 
 /* Config */
 const colors = ['#800', '#080', '#008'];
@@ -85,8 +90,12 @@ const initUpdater = (sources, delay=1000) => {
 	sources.timer.update(i++);
 	sources.color.update(colors[i % colors.length]);
 
+	const x = new Date;
+
 	setInterval(() => {
-		sources.timer.update(i++);
+		debug(i++, new Date - x);
+
+		sources.timer.update(i);
 		sources.color.update(colors[i % colors.length]);
 	}, delay);
 }
@@ -122,5 +131,6 @@ const perfApp = (count=1000) => {
 }
 
 export default function App() {
-	return devApp();
+	logLevel = 0;
+	return perfApp(1000);
 };
