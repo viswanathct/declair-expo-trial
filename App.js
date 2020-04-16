@@ -4,6 +4,7 @@ import declair from 'declair/quick';
 /* State */
 let i = 0;
 let logLevel = 0;
+let delay=1000;
 
 /* Helpers */
 const debug = (...args) =>
@@ -86,24 +87,28 @@ const getConfig = (type='nested') => ({
 	structure: structures[type],
 });
 
-const initUpdater = (sources, delay=1000) => {
-	sources.timer.update(i++);
-	sources.color.update(colors[i % colors.length]);
+const initUpdater = (publish) => {
+	publish({
+		timer: i,
+		color: colors[i % colors.length],
+	});
 
 	const x = new Date;
 
 	setInterval(() => {
 		debug(i++, new Date - x);
 
-		sources.timer.update(i);
-		sources.color.update(colors[i % colors.length]);
+		publish({
+			timer: i,
+			color: colors[i % colors.length],
+		});
 	}, delay);
 }
 
-const devApp = (type='nested', interval=1000) => {
-	const { root: Root, sources } = declair(getConfig(type));
+const devApp = (type='nested') => {
+	const { root: Root, publish } = declair(getConfig(type));
 
-	initUpdater(sources, interval);
+	initUpdater(publish);
 
 	return <Root/>;
 }
@@ -117,11 +122,11 @@ const perfApp = (count=1000) => {
 		embedRoot[`embedding${i}`] = childConfig;
 
 	const start = performance.now();
-	const { root: Root, sources } = declair(config);
+	const { root: Root, publish } = declair(config);
 
 	console.log('Config', performance.now() - start);
 
-	initUpdater(sources);
+	initUpdater(publish);
 
 	const root = <Root/>;
 
@@ -131,6 +136,7 @@ const perfApp = (count=1000) => {
 }
 
 export default function App() {
-	logLevel = 0;
+	logLevel = 1;
 	return perfApp(1000);
+	// return devApp('flat');
 };
