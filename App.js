@@ -10,6 +10,11 @@ let delay=1000;
 const debug = (...args) =>
 	logLevel < 1 && console.log(...args)
 
+const setupMocks = () => {
+	if(! window.performance)
+		window.performance = { now: () => new Date() };
+};
+
 /* Config */
 const colors = ['#800', '#080', '#008'];
 const source = {
@@ -136,6 +141,7 @@ const perfApp = (count=1000) => {
 }
 
 export default function App() {
+	setupMocks();
 	logLevel = 1;
 	return perfApp(1000);
 	// return devApp('flat');
