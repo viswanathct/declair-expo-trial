@@ -22,9 +22,17 @@ const source = {
 	data: 'timer',
 	style: {
 		color: 'color',
+		borderColor: 'input',
 		fontSize: 100,
+		fontStyle: 'italic',
+		borderWidth: 3,
 	},
 };
+const input = {
+	type: 'input',
+	data: 'input',
+};
+
 const structures = {
 	flat: {
 		type: 'text',
@@ -58,6 +66,7 @@ const structures = {
 							fontSize: 12,
 						},
 					},
+					input: input,
 					source: source,
 				},
 			},
@@ -81,12 +90,16 @@ const getConfig = (type='nested') => ({
 	},
 	sources: {
 		timer: {
-			type: 'config',
-			value: i,
+			type: 'store',
+			data: i,
 		},
 		color: {
-			type: 'config',
-			value: colors[i],
+			type: 'store',
+			data: colors[i],
+		},
+		input: {
+			type: 'store',
+			data: 'red',
 		},
 	},
 	structure: structures[type],
@@ -98,10 +111,10 @@ const initUpdater = (publish) => {
 		color: colors[i % colors.length],
 	});
 
-	const x = new Date;
+	const startTime = new Date;
 
 	setInterval(() => {
-		debug(i++, new Date - x);
+		debug(i++, new Date - startTime);
 
 		publish({
 			timer: i,
@@ -143,6 +156,7 @@ const perfApp = (count=1000) => {
 export default function App() {
 	setupMocks();
 	logLevel = 1;
-	return perfApp(1000);
-	// return devApp('flat');
+	delay *= 1;
+	// return perfApp(1000);
+	return devApp();
 };
