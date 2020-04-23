@@ -32,6 +32,43 @@ const input = {
 	type: 'input',
 	data: 'input',
 };
+const itemTree = {
+	child: {
+		style: {
+			borderColor: 'purple',
+			flex: 1,
+			flexDirection: 'column',
+			justifyContent: 'flex-start',
+		},
+		items: {
+			embedded: {
+				type: 'text',
+				data: 'Some text as embedded data!',
+				style: {
+					fontSize: 12,
+				},
+			},
+			input: input,
+			source: source,
+		},
+	},
+	child1: {
+		style: {
+			flexDirection: 'row',
+			justifyContent: 'space-around',
+		},
+		items: {
+			message: {
+				type: 'text',
+				data: 'Some text!',
+			},
+			message1: {
+				type: 'text',
+				data: 'Some other text!',
+			},
+		}
+	},
+};
 
 const structures = {
 	flat: {
@@ -42,35 +79,28 @@ const structures = {
 			fontSize: 100,
 		},
 	},
+	routed: {
+		type: 'router',
+		data: {
+			message: 'Some text passed as data from the parent!',
+		},
+		style: {
+			borderColor: 'purple',
+			borderWidth: 2,
+		},
+		items: itemTree,
+	},
 	nested: {
 		data: {
 			message: 'Some text passed as data from the parent!',
 		},
 		style: {
-			borderWidth: 3,
+			borderColor: 'black',
+			flex: 1,
+			flexDirection: 'column',
+			width: '100%',
 		},
-		items: {
-			message: {
-				type: 'text',
-			},
-			child: {
-				style: {
-					borderColor: '#f00',
-					margin: 5,
-				},
-				items: {
-					embedded: {
-						type: 'text',
-						data: 'Some text as embedded data!',
-						style: {
-							fontSize: 12,
-						},
-					},
-					input: input,
-					source: source,
-				},
-			},
-		},
+		items: itemTree,
 	},
 }
 
@@ -79,7 +109,7 @@ const getConfig = (type='nested') => ({
 		element: {
 			style: {
 				backgroundColor: '#ddd',
-				borderWidth: 5,
+				borderWidth: 1,
 			},
 		},
 		text: {
@@ -158,5 +188,5 @@ export default function App() {
 	logLevel = 1;
 	delay *= 1;
 	// return perfApp(1000);
-	return devApp();
+	return devApp('routed');
 };
