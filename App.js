@@ -52,22 +52,6 @@ const itemTree = {
 			source: source,
 		},
 	},
-	child1: {
-		style: {
-			flexDirection: 'row',
-			justifyContent: 'space-around',
-		},
-		items: {
-			message: {
-				type: 'text',
-				data: 'Some text!',
-			},
-			message1: {
-				type: 'text',
-				data: 'Some other text!',
-			},
-		}
-	},
 };
 
 const structures = {
@@ -87,8 +71,35 @@ const structures = {
 		style: {
 			borderColor: 'purple',
 			borderWidth: 2,
+			marginTop: 50,
 		},
-		items: itemTree,
+		items: {
+			...itemTree,
+			child1: {
+				style: {
+					backgroundColor: 'yellow',
+				},
+				items: {
+					sub: {
+						type: 'router',
+						style: {
+							borderColor: 'red',
+							borderWidth: 1,
+						},
+						items: {
+							someText: {
+								type: 'text',
+								data: 'Some text!',
+							},
+							someOtherText: {
+								type: 'text',
+								data: 'Some other text!',
+							},
+						},
+					},
+				},
+			},
+		},
 	},
 	nested: {
 		data: {
