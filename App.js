@@ -71,7 +71,13 @@ const structures = {
 		style: {
 			borderColor: 'purple',
 			borderWidth: 2,
-			marginTop: 50,
+		},
+		platform: {
+			android: {
+				style: {
+					marginTop: 50,
+				},
+			}
 		},
 		items: {
 			...itemTree,
