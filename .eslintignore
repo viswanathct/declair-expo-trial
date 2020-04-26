@@ -1,1 +1,4 @@
+web-build/register-service-worker.js
 dist
+*.spec.js
+babel.config.js
