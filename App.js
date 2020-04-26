@@ -15,6 +15,15 @@ const setupMocks = () => {
 		window.performance = { now: () => new Date() };
 };
 
+const initDevEnv = () => {
+	console.log(
+		`%c ${ (new Date).toLocaleTimeString() }`,
+		'background: #222; color: #bada55; font-size: 20pt',
+		);
+
+	setupMocks();
+}
+
 /* Config */
 const colors = ['#800', '#080', '#008'];
 const source = {
@@ -55,6 +64,10 @@ const itemTree = {
 };
 
 const structures = {
+	dev: {
+		type: 'text',
+		data: 'some data',
+	},
 	flat: {
 		type: 'text',
 		data: 'timer',
@@ -121,7 +134,7 @@ const structures = {
 	},
 }
 
-const getConfig = (type='nested') => ({
+const getConfig = (type='dev') => ({
 	types: {
 		element: {
 			style: {
@@ -170,7 +183,7 @@ const initUpdater = (publish) => {
 	}, delay);
 }
 
-const devApp = (type='nested') => {
+const devApp = (type='dev') => {
 	const { root: Root, publish } = declair(getConfig(type));
 
 	initUpdater(publish);
@@ -201,9 +214,9 @@ const perfApp = (count=1000) => {
 }
 
 export default function App() {
-	setupMocks();
+	initDevEnv();
 	logLevel = 1;
 	delay *= 1;
 	// return perfApp(1000);
-	return devApp('routed');
+	return devApp();
 };
