@@ -39,10 +39,14 @@ const initUpdater = (publish) => {
 
 	setInterval(() => {
 		debug(epoch++, new Date() - startTime);
+		const color = colors[epoch % colors.length];
 
 		publish({
 			timer: epoch,
-			color: colors[epoch % colors.length],
+			color: color,
+			nested: {
+				sub: { text: color, overridden: color },
+			},
 		});
 	}, delay);
 };
@@ -82,7 +86,7 @@ const App = () => {
 	logLevel = 1;
 	delay *= 1;
 
-	return Apps.dev('routed');
+	return Apps.dev();
 };
 
 export default App;

@@ -11,6 +11,15 @@ const sources = {
 		type: 'store',
 		data: 'red',
 	},
+	nested: {
+		type: 'store',
+		data: {
+			sub: {
+				text: 'red',
+				overridden: 'red',
+			},
+		},
+	},
 };
 
 export default sources;
