@@ -1,24 +1,18 @@
+import { colors } from './shared';
+
 const sources = {
 	timer: {
 		type: 'store',
 		data: 0,
 	},
 	color: {
-		type: 'store',
-		data: 'red',
+		type: 'transformation',
+		data: 1,
+		transform: (data) => colors[data % colors.length],
 	},
 	input: {
 		type: 'store',
 		data: 'red',
-	},
-	nested: {
-		type: 'store',
-		data: {
-			sub: {
-				text: 'red',
-				overridden: 'red',
-			},
-		},
 	},
 };
 

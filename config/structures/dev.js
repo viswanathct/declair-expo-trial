@@ -1,18 +1,6 @@
 const dev = {
-	data: 'nested',
-	items: {
-		sub: {
-			items: {
-				text: {
-					type: 'text',
-				},
-				overridden: {
-					type: 'text',
-					data: 'overridden',
-				},
-			},
-		},
-	},
+	type: 'text',
+	data: 'color',
 };
 
 export default dev;

@@ -4,14 +4,12 @@ import React from 'react';
 import declair from 'declair/quick';
 import config from './config';
 import { source } from './config/structures/shared';
+import { colors } from './config/shared';
 
 /* State */
 let epoch = 0;
 let logLevel = 0;
 let delay = 1000;
-
-/* Data */
-const colors = ['#800', '#080', '#008'];
 
 /* Helpers */
 const debug = (...args) =>
@@ -32,21 +30,17 @@ const initDevEnv = () => {
 const initUpdater = (publish) => {
 	publish({
 		timer: epoch,
-		color: colors[epoch % colors.length],
+		color: epoch % colors.length,
 	});
 
 	const startTime = new Date();
 
 	setInterval(() => {
 		debug(epoch++, new Date() - startTime);
-		const color = colors[epoch % colors.length];
 
 		publish({
 			timer: epoch,
-			color: color,
-			nested: {
-				sub: { text: color, overridden: color },
-			},
+			color: epoch % colors.length,
 		});
 	}, delay);
 };
@@ -85,7 +79,7 @@ const App = () => {
 	logLevel = 1;
 	delay *= 1;
 
-	return Apps.perf();
+	return Apps.dev('routed');
 };
 
 export default App;
