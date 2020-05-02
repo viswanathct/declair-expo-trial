@@ -2,16 +2,22 @@ import { colors } from './shared';
 
 const sources = {
 	timer: {
-		type: 'store',
+		type: 'value',
 		data: 0,
+	},
+	style: {
+		type: 'value',
+		data: {
+			color: 'timer',
+		},
 	},
 	color: {
 		type: 'transformation',
-		data: 1,
-		transform: (data) => colors[data % colors.length],
+		data: 'style',
+		transform: ({ color }) => colors[color % colors.length],
 	},
 	input: {
-		type: 'store',
+		type: 'value',
 		data: 'red',
 	},
 };

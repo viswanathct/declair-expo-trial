@@ -4,7 +4,6 @@ import React from 'react';
 import declair from 'declair/quick';
 import config from './config';
 import { source } from './config/structures/shared';
-import { colors } from './config/shared';
 
 /* State */
 let epoch = 0;
@@ -30,7 +29,6 @@ const initDevEnv = () => {
 const initUpdater = (publish) => {
 	publish({
 		timer: epoch,
-		color: epoch % colors.length,
 	});
 
 	const startTime = new Date();
@@ -40,7 +38,6 @@ const initUpdater = (publish) => {
 
 		publish({
 			timer: epoch,
-			color: epoch % colors.length,
 		});
 	}, delay);
 };
