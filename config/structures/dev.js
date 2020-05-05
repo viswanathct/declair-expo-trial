@@ -1,6 +1,9 @@
 const dev = {
-	type: 'text',
-	data: 'color',
+	type: 'list',
+	data: [1, 2, 3],
+	item: {
+		type: 'text',
+	},
 };
 
 export default dev;
