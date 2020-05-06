@@ -1,8 +1,16 @@
 const dev = {
 	type: 'list',
-	data: [1, 2, 3],
+	data: [
+		{ sub: 1 },
+		{ sub: 2 },
+		{ sub: 3 },
+	],
 	item: {
-		type: 'text',
+		items: {
+			sub: {
+				type: 'text',
+			},
+		},
 	},
 };
 

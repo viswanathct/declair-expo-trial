@@ -43,10 +43,10 @@ const initUpdater = (publish) => {
 };
 
 const Apps = {
-	dev: (type = 'dev') => {
+	dev: (type = 'dev', live = true) => {
 		const { root: Root, publish } = declair(config(type));
 
-		initUpdater(publish);
+		live && initUpdater(publish);
 
 		return <Root/>;
 	},
@@ -76,7 +76,7 @@ const App = () => {
 	logLevel = 1;
 	delay *= 1;
 
-	return Apps.dev();
+	return Apps.dev('dev', false);
 };
 
 export default App;
