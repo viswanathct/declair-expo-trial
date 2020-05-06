@@ -1,14 +1,19 @@
 const dev = {
-	type: 'list',
-	data: [
-		{ sub: 1 },
-		{ sub: 2 },
-		{ sub: 3 },
-	],
-	item: {
-		items: {
-			sub: {
-				type: 'text',
+	items: {
+		text: {
+			type: 'text',
+			data: 'timer',
+		},
+		input: {
+			type: 'input',
+			data: 'input',
+		},
+		button: {
+			type: 'button',
+			data: 'Change',
+			action: {
+				target: 'timer',
+				data: 'input',
 			},
 		},
 	},

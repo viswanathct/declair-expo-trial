@@ -74,9 +74,9 @@ const Apps = {
 const App = () => {
 	initDevEnv();
 	logLevel = 1;
-	delay *= 1;
+	delay *= 2;
 
-	return Apps.dev('routed');
+	return Apps.dev();
 };
 
 export default App;

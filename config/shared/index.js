@@ -1,4 +1,4 @@
 /* Exports */
-const colors = ['#800', '#080', '#008'];
+const colors = ['red', 'green', 'blue'];
 
 export { colors };
