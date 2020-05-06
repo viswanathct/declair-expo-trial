@@ -1,3 +1,11 @@
+const embedded = {
+	type: 'text',
+	data: 'Some text as embedded data!',
+	style: {
+		fontSize: 12,
+	},
+};
+
 const input = {
 	type: 'input',
 	data: 'input',
@@ -16,6 +24,15 @@ const list = {
 				type: 'text',
 			},
 		},
+	},
+};
+
+const button = {
+	type: 'button',
+	data: 'Get Text Color',
+	action: {
+		target: 'input',
+		data: 'color',
 	},
 };
 
@@ -41,16 +58,11 @@ const itemTree = {
 			justifyContent: 'flex-start',
 		},
 		items: {
-			embedded: {
-				type: 'text',
-				data: 'Some text as embedded data!',
-				style: {
-					fontSize: 12,
-				},
-			},
-			input: input,
-			source: source,
-			list: list,
+			embedded,
+			input,
+			button,
+			source,
+			list,
 		},
 	},
 };
