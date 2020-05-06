@@ -3,6 +3,22 @@ const input = {
 	data: 'input',
 };
 
+const list = {
+	type: 'list',
+	data: [
+		{ sub: 1 },
+		{ sub: 2 },
+		{ sub: 3 },
+	],
+	item: {
+		items: {
+			sub: {
+				type: 'text',
+			},
+		},
+	},
+};
+
 /* Exports */
 const source = {
 	type: 'text',
@@ -34,6 +50,7 @@ const itemTree = {
 			},
 			input: input,
 			source: source,
+			list: list,
 		},
 	},
 };

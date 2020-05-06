@@ -76,7 +76,7 @@ const App = () => {
 	logLevel = 1;
 	delay *= 1;
 
-	return Apps.dev('dev', false);
+	return Apps.dev('routed');
 };
 
 export default App;
