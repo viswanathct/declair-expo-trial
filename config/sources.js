@@ -28,6 +28,10 @@ const sources = {
 			{ sub: 3 },
 		],
 	},
+	proxy: {
+		type: 'collection',
+		data: 'collection',
+	},
 };
 
 export default sources;

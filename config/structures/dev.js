@@ -1,6 +1,6 @@
 const dev = {
 	type: 'list',
-	data: 'collection',
+	data: 'proxy',
 	item: {
 		items: {
 			sub: {
