@@ -13,11 +13,7 @@ const input = {
 
 const list = {
 	type: 'list',
-	data: [
-		{ sub: 1 },
-		{ sub: 2 },
-		{ sub: 3 },
-	],
+	data: 'collection',
 	item: {
 		items: {
 			sub: {
