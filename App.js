@@ -26,19 +26,37 @@ const initDevEnv = () => {
 	setupMocks();
 };
 
-const initUpdater = (publish) => {
-	publish({
-		timer: epoch,
-	});
+const getPublisher = (publish) => {
+	const collectionMessages = [
+		{
+			action: 'create',
+			data: { id: 'test', sub: 'created' },
+		},
+		{
+			action: 'update',
+			data: { id: 'test', sub: 'updated' },
+		},
+		{
+			action: 'delete',
+			data: { id: 'test' },
+		},
+	];
 
+	return () => publish({
+		timer: epoch,
+		collection: collectionMessages[epoch % collectionMessages.length],
+	});
+};
+
+const initUpdater = (publisher) => {
+	const publish = getPublisher(publisher);
+
+	publish();
 	const startTime = new Date();
 
 	setInterval(() => {
 		debug(epoch++, new Date() - startTime);
-
-		publish({
-			timer: epoch,
-		});
+		publish();
 	}, delay);
 };
 
@@ -76,7 +94,7 @@ const App = () => {
 	logLevel = 1;
 	delay *= 1;
 
-	return Apps.dev('routed');
+	return Apps.dev('dev');
 };
 
 export default App;

@@ -20,6 +20,14 @@ const sources = {
 		type: 'value',
 		data: 'red',
 	},
+	collection: {
+		type: 'collection',
+		data: [
+			{ sub: 1 },
+			{ sub: 2 },
+			{ sub: 3 },
+		],
+	},
 };
 
 export default sources;
