@@ -16,6 +16,13 @@ const list = {
 	data: 'collection',
 	item: {
 		items: {
+			delete: {
+				type: 'button',
+				label: 'X',
+				data: {
+					action: 'delete',
+				},
+			},
 			sub: {
 				type: 'text',
 			},
@@ -25,11 +32,9 @@ const list = {
 
 const button = {
 	type: 'button',
-	data: 'Get Text Color',
-	action: {
-		target: 'input',
-		data: 'color',
-	},
+	data: 'color',
+	label: 'Get Text Color',
+	target: 'input',
 };
 
 /* Exports */
