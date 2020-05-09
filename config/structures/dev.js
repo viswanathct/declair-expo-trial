@@ -3,6 +3,13 @@ const dev = {
 	data: 'proxy',
 	item: {
 		items: {
+			delete: {
+				type: 'button',
+				label: 'X',
+				data: {
+					action: 'delete',
+				},
+			},
 			sub: {
 				type: 'text',
 			},
