@@ -1,17 +1,19 @@
 const dev = {
-	type: 'list',
-	data: 'proxy',
-	item: {
-		items: {
-			delete: {
-				type: 'button',
-				label: 'X',
-				data: {
-					action: 'delete',
-				},
-			},
-			sub: {
-				type: 'text',
+	type: 'form',
+	data: 'form',
+	style: {
+		borderColor: 'borderColor',
+		borderWidth: 5,
+	},
+	items: {
+		color: {
+			type: 'input',
+		},
+		submit: {
+			type: 'button',
+			label: 'Change Border Color',
+			data: {
+				action: 'submit',
 			},
 		},
 	},

@@ -16,6 +16,17 @@ const sources = {
 		data: 'style',
 		transform: ({ color }) => colors[color % colors.length],
 	},
+	form: {
+		type: 'value',
+		data: {
+			color: '0',
+		},
+	},
+	borderColor: {
+		type: 'transformation',
+		data: 'form',
+		transform: ({ color }) => colors[parseInt(color, 10) % colors.length],
+	},
 	input: {
 		type: 'value',
 		data: 'red',
