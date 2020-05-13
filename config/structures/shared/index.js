@@ -72,6 +72,7 @@ const source = {
 
 const itemTree = {
 	child: {
+		label: 'Custom label',
 		style: {
 			borderColor: 'purple',
 			flex: 1,

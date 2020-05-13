@@ -30,11 +30,11 @@ const getPublisher = (publish) => {
 	const collectionMessages = [
 		{
 			action: 'create',
-			data: { id: 'test', color: 'created' },
+			data: { id: 'test', color: '5' },
 		},
 		{
 			action: 'update',
-			data: { id: 'test', color: 'updated' },
+			data: { id: 'test', color: '6' },
 		},
 		{
 			action: 'delete',
@@ -75,6 +75,7 @@ const Apps = {
 
 		for(let i = 1; i < count; i++)
 			embedRoot[`embedding${ i }`] = childConfig;
+
 		const start = performance.now();
 		const { root: Root, publish } = declair(baseConfig);
 
