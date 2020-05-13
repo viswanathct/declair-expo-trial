@@ -11,6 +11,26 @@ const input = {
 	data: 'input',
 };
 
+const form = {
+	type: 'form',
+	data: {
+		action: 'create',
+	},
+	target: 'collection',
+	items: {
+		color: {
+			type: 'input',
+		},
+		submit: {
+			type: 'button',
+			label: 'Add Item',
+			data: {
+				action: 'submit',
+			},
+		},
+	},
+};
+
 const list = {
 	type: 'list',
 	data: 'collection',
@@ -23,7 +43,7 @@ const list = {
 					action: 'delete',
 				},
 			},
-			sub: {
+			color: {
 				type: 'text',
 			},
 		},
@@ -63,6 +83,7 @@ const itemTree = {
 			input,
 			button,
 			source,
+			form,
 			list,
 		},
 	},

@@ -30,11 +30,11 @@ const getPublisher = (publish) => {
 	const collectionMessages = [
 		{
 			action: 'create',
-			data: { id: 'test', sub: 'created' },
+			data: { id: 'test', color: 'created' },
 		},
 		{
 			action: 'update',
-			data: { id: 'test', sub: 'updated' },
+			data: { id: 'test', color: 'updated' },
 		},
 		{
 			action: 'delete',
@@ -94,7 +94,7 @@ const App = () => {
 	logLevel = 1;
 	delay *= 1;
 
-	return Apps.dev('dev');
+	return Apps.dev('routed');
 };
 
 export default App;

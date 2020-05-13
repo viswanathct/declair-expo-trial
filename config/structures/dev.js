@@ -8,7 +8,7 @@ const dev = {
 				borderWidth: 5,
 			},
 			items: {
-				sub: {
+				color: {
 					type: 'input',
 				},
 				colorName: {
@@ -31,7 +31,7 @@ const dev = {
 			},
 			target: 'collection',
 			items: {
-				sub: {
+				color: {
 					type: 'input',
 				},
 				submit: {
@@ -55,7 +55,7 @@ const dev = {
 							action: 'delete',
 						},
 					},
-					sub: {
+					color: {
 						type: 'text',
 					},
 				},

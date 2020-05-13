@@ -19,13 +19,13 @@ const sources = {
 	form: {
 		type: 'value',
 		data: {
-			sub: '0',
+			color: '0',
 		},
 	},
 	borderColor: {
 		type: 'transformation',
 		data: 'form',
-		transform: ({ sub }) => colors[parseInt(sub, 10) % colors.length],
+		transform: ({ color }) => colors[parseInt(color, 10) % colors.length],
 	},
 	input: {
 		type: 'value',
@@ -34,9 +34,9 @@ const sources = {
 	collection: {
 		type: 'collection',
 		data: [
-			{ sub: 1 },
-			{ sub: 2 },
-			{ sub: 3 },
+			{ color: 1 },
+			{ color: 2 },
+			{ color: 3 },
 		],
 	},
 	proxy: {
