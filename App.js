@@ -26,25 +26,28 @@ const initDevEnv = () => {
 	setupMocks();
 };
 
-const getPublisher = (publish) => {
-	const collectionMessages = [
-		{
-			action: 'create',
-			data: { id: 'test', color: '5' },
-		},
-		{
-			action: 'update',
-			data: { id: 'test', color: '6' },
-		},
-		{
-			action: 'delete',
-			data: { id: 'test' },
-		},
-	];
+const getCollectionMessages = (val) => [
+	{
+		action: 'create',
+		data: { id: 'test', color: val.toString() },
+	},
+	{
+		action: 'update',
+		data: { id: 'test', color: val.toString() },
+	},
+	{
+		action: 'delete',
+		data: { id: 'test' },
+	},
+];
 
-	return () => publish({
+const getPublisher = (publish) => () => {
+	const collectionMessages = getCollectionMessages(epoch);
+
+	publish({
 		timer: epoch,
-		collection: collectionMessages[epoch % collectionMessages.length],
+		collection:
+			collectionMessages[epoch % collectionMessages.length],
 	});
 };
 
