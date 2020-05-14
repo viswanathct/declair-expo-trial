@@ -96,9 +96,9 @@ const Apps = {
 const App = () => {
 	initDevEnv();
 	logLevel = 1;
-	delay *= 1;
+	delay *= 4;
 
-	return Apps.dev('routed');
+	return Apps.dev('dev');
 };
 
 export default App;

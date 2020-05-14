@@ -1,49 +1,33 @@
 const dev = {
 	items: {
-		simpleForm: {
-			type: 'form',
-			data: 'form',
-			style: {
-				borderColor: 'borderColor',
-				borderWidth: 5,
-			},
-			items: {
-				color: {
-					type: 'input',
+		header: {
+			type: 'text',
+			data: 'The lists are synced. Edit or remove items for the lists.',
+		},
+		updateList: {
+			type: 'list',
+			data: 'collection',
+			item: {
+				type: 'form',
+				data: {
+					action: 'update',
 				},
-				colorName: {
-					type: 'text',
-					data: 'borderColor',
-				},
-				submit: {
-					type: 'button',
-					label: 'Change Border Color',
-					data: {
-						action: 'submit',
+				target: 'collection',
+				items: {
+					color: {
+						type: 'input',
+					},
+					submit: {
+						type: 'button',
+						label: 'Update Item',
+						data: {
+							action: 'submit',
+						},
 					},
 				},
 			},
 		},
-		form: {
-			type: 'form',
-			data: {
-				action: 'create',
-			},
-			target: 'collection',
-			items: {
-				color: {
-					type: 'input',
-				},
-				submit: {
-					type: 'button',
-					label: 'Add Item',
-					data: {
-						action: 'submit',
-					},
-				},
-			},
-		},
-		list: {
+		displayList: {
 			type: 'list',
 			data: 'collection',
 			item: {
