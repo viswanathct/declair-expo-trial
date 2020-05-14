@@ -1,8 +1,34 @@
 const dev = {
 	items: {
+		create: {
+			type: 'form',
+			data: {
+				action: 'create',
+				data: {
+					color: 1,
+				},
+			},
+			target: 'collection',
+			items: {
+				color: {
+					type: 'input',
+				},
+				submit: {
+					type: 'button',
+					label: 'Add Item',
+					data: {
+						action: 'submit',
+					},
+				},
+			},
+		},
 		header: {
 			type: 'text',
-			data: 'The lists are synced. Edit or remove items for the lists.',
+			data: 'The lists below are synced. '
+				+ 'Edit or remove items for the lists.',
+			style: {
+				marginTop: 20,
+			},
 		},
 		updateList: {
 			type: 'list',
@@ -12,7 +38,6 @@ const dev = {
 				data: {
 					action: 'update',
 				},
-				target: 'collection',
 				items: {
 					color: {
 						type: 'input',
