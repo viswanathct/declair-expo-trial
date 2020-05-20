@@ -1,11 +1,16 @@
 const dev = {
 	items: {
+		publish: {
+			type: 'button',
+			target: 'timer',
+			data: 10,
+		},
 		create: {
 			type: 'form',
 			data: {
 				action: 'create',
 				data: {
-					color: 1,
+					color: 'New Color',
 				},
 			},
 			target: 'collection',
@@ -23,7 +28,7 @@ const dev = {
 			},
 		},
 		header: {
-			type: 'text',
+			type: 'input',
 			data: 'The lists below are synced. '
 				+ 'Edit or remove items for the lists.',
 			style: {
@@ -65,7 +70,7 @@ const dev = {
 						},
 					},
 					color: {
-						type: 'text',
+						type: 'input',
 					},
 				},
 			},

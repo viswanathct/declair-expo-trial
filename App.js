@@ -76,7 +76,7 @@ const Apps = {
 		const embedRoot = baseConfig.structure.items.child.items;
 		const childConfig = source;
 
-		for(let i = 1; i < count; i++)
+		for(let i = 1; i <= count; i++)
 			embedRoot[`embedding${ i }`] = childConfig;
 
 		const start = performance.now();
