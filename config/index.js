@@ -3,13 +3,13 @@ import { rndValue } from '@laufire/utils/random';
 import { peek } from '@laufire/utils/debug';
 
 import sources from './sources';
-import modules from './structures/dev';
+import structures from './structures';
 
 /* Helpers */
 const getRndModuleId = () => {
 	const moduleList = [];
 
-	traverse(map(modules, (base, baseName) =>
+	traverse(map(structures, (base, baseName) =>
 		map(base, (dummy, itemName) =>
 			`${ baseName }/${ itemName }`)), (path) => moduleList.push(path));
 
@@ -17,7 +17,7 @@ const getRndModuleId = () => {
 };
 
 const getModule = (moduleId) =>
-	result(modules, peek(moduleId || getRndModuleId()));
+	result(structures, peek(moduleId || getRndModuleId()));
 
 /* Exports */
 const config = (moduleId) => ({

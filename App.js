@@ -3,7 +3,7 @@
 import React from 'react';
 import declair from 'declair/quick';
 import config from './config';
-import { source } from './config/structures/dev/shared/parts';
+import { source } from './config/structures/shared/parts';
 
 /* State */
 let logLevel = 0;
