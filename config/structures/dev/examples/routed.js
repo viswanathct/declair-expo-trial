@@ -1,4 +1,4 @@
-import { itemTree } from './shared';
+import { itemTree } from '../shared/parts';
 
 const routed = {
 	type: 'router',

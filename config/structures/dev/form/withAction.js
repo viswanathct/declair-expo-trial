@@ -1,4 +1,4 @@
-import { addItemForm, displayList } from '../shared';
+import { addItemForm, displayList } from '../shared/components';
 
 const withAction = {
 	items: {

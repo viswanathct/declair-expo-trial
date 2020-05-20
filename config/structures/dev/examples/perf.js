@@ -1,4 +1,4 @@
-import { resetTimerButton } from '../shared';
+import { resetTimerButton } from '../shared/components';
 
 const perf = {
 	items: {

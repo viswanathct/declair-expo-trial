@@ -1,5 +1,5 @@
 import { addItemForm, displayList,
-	resetTimerButton, updateList } from '../shared';
+	resetTimerButton, updateList } from '../shared/components';
 
 const header = {
 	type: 'text',

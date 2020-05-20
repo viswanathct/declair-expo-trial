@@ -3,7 +3,7 @@
 import React from 'react';
 import declair from 'declair/quick';
 import config from './config';
-import { source } from './config/structures/shared';
+import { source } from './config/structures/dev/shared/parts';
 
 /* State */
 let logLevel = 0;
@@ -68,19 +68,19 @@ const initUpdater = (publisher) => {
 };
 
 const Apps = {
-	dev: (type = 'dev', live = true) => {
-		const { root: Root, publish } = declair(config(type));
+	dev: (moduleId, live = true) => {
+		const { root: Root, publish } = declair(config(moduleId));
 
 		live && initUpdater(publish);
 
 		return <Root/>;
 	},
-	perf: (count = 1000) => { // eslint-disable-line max-statements, no-magic-numbers
-		const baseConfig = config('nested');
+	perf: (count = 100) => { // eslint-disable-line max-statements, no-magic-numbers
+		const baseConfig = config('examples/nested');
 		const embedRoot = baseConfig.structure.items.child.items;
 		const childConfig = source;
 
-		for(let i = 1; i <= count; i++)
+		for(let i = 0; i < count; ++i)
 			embedRoot[`embedding${ i }`] = childConfig;
 
 		const start = performance.now();
@@ -102,7 +102,7 @@ const App = () => {
 	logLevel = 1;
 	delay *= 1;
 
-	return Apps.dev('dev');
+	return Apps.dev('examples/nested');
 };
 
 export default App;
