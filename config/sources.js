@@ -1,6 +1,17 @@
 import { colors } from './shared';
+import { select } from '@laufire/utils/collection';
 
+/* Config */
+const sourceSelection = [];
+
+/* Exports */
 const sources = {
+	buffer: {
+		type: 'value',
+		data: {
+			color: 'Any type goes...!',
+		},
+	},
 	timer: {
 		type: 'value',
 		data: 0,
@@ -10,6 +21,31 @@ const sources = {
 		data: {
 			color: 'timer',
 		},
+	},
+	currentTime: {
+		type: 'transformation',
+		data: 'timer',
+		transform: () => new Date().toISOString(),
+	},
+	debug: {
+		type: 'transformation',
+		data: 'buffer',
+		transform: (buffer) => (console.log(buffer), buffer),
+	},
+	cachedTime: {
+		type: 'transformation',
+		data: 'timer',
+		transform: (() => {
+			const cache = { ret: 'Cache empty!' };
+
+			return () => {
+				const { ret } = cache;
+
+				cache.ret = new Date().toISOString();
+
+				return ret;
+			};
+		})(),
 	},
 	color: {
 		type: 'transformation',
@@ -45,4 +81,9 @@ const sources = {
 	},
 };
 
-export default sources;
+const selectedSources = () =>
+	(sourceSelection.length
+		? select(sources, sourceSelection)
+		: sources);
+
+export default selectedSources();
