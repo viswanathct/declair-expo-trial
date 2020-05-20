@@ -6,7 +6,6 @@ import config from './config';
 import { source } from './config/structures/shared';
 
 /* State */
-let epoch = 0;
 let logLevel = 0;
 let delay = 1000;
 
@@ -41,17 +40,22 @@ const getCollectionMessages = (val) => [
 	},
 ];
 
-const getPublisher = (publish) => () => {
-	const collectionMessages = getCollectionMessages(epoch);
+const getPublisher = (publish) => {
+	debug('Initiating publish messages.');
 
-	publish({
-		timer: epoch,
-		collection:
-			collectionMessages[epoch % collectionMessages.length],
-	});
+	return (val = 0) => {
+		const collectionMessages = getCollectionMessages(val);
+
+		publish({
+			timer: val,
+			collection:
+				collectionMessages[val % collectionMessages.length],
+		});
+	};
 };
 
 const initUpdater = (publisher) => {
+	let epoch = 0;
 	const publish = getPublisher(publisher);
 
 	publish();
@@ -59,7 +63,7 @@ const initUpdater = (publisher) => {
 
 	setInterval(() => {
 		debug(epoch++, new Date() - startTime);
-		publish();
+		publish(epoch);
 	}, delay);
 };
 
@@ -98,7 +102,7 @@ const App = () => {
 	logLevel = 1;
 	delay *= 1;
 
-	return Apps.dev('dev', false);
+	return Apps.dev('dev');
 };
 
 export default App;

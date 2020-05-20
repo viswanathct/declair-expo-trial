@@ -1,5 +1,6 @@
 import { colors } from './shared';
 import { select } from '@laufire/utils/collection';
+import { peek } from '@laufire/utils/debug';
 
 /* Config */
 const sourceSelection = [];
@@ -30,7 +31,7 @@ const sources = {
 	debug: {
 		type: 'transformation',
 		data: 'buffer',
-		transform: (buffer) => (console.log(buffer), buffer),
+		transform: peek,
 	},
 	cachedTime: {
 		type: 'transformation',
