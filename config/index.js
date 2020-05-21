@@ -1,7 +1,6 @@
 import { has, keys, map, result,
 	select, traverse } from '@laufire/utils/collection';
 import { rndValue } from '@laufire/utils/random';
-import { peek } from '@laufire/utils/debug';
 
 import allSources from './sources';
 import structures from './structures';
@@ -17,9 +16,6 @@ const getRndModuleId = () => {
 
 	return rndValue(moduleList);
 };
-
-const getStructure = (moduleId) =>
-	result(structures, peek(moduleId || getRndModuleId()));
 
 const filterSources = (sources, structure) => {
 	const sourceNames = keys(sources);
@@ -40,11 +36,14 @@ const filterSources = (sources, structure) => {
 };
 
 /* Exports */
-const config = (structureID) => {
-	const structure = getStructure(structureID);
+const config = (passedStructureID) => {
+	const structureID = passedStructureID || getRndModuleId();
+	const structure = result(structures, structureID);
 	const sources = filterSources(allSources, structure);
 
-	return { types, sources, structure };
+	const app = { types, sources, structure };
+
+	return { structureID, app };
 };
 
 export default config;

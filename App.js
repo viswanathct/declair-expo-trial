@@ -19,9 +19,13 @@ const setupMocks = () => {
 		window.performance = { now: () => new Date() };
 };
 
+const styledLog = (x) => console.log(`%c ${ x }`,
+	'background: #222; color: #bada55; font-size: 20pt') ;
+
 const initDevEnv = () => {
-	console.log(`%c ${ (new Date()).toLocaleTimeString() }`,
-		'background: #222; color: #bada55; font-size: 20pt',);
+	const startTime = new Date();
+
+	styledLog(`${ startTime.toLocaleTimeString() }:${ startTime.getMilliseconds() }`);
 
 	setupMocks();
 };
@@ -74,15 +78,17 @@ const initUpdater = (publisher, sources) => {
 
 const Apps = {
 	dev: (structureId, live = true) => {
-		const appConfig = config(structureId);
-		const { root: Root, publish } = declair(appConfig);
+		const { app, structureID } = config(structureId);
+		const { root: Root, publish } = declair(app);
 
-		live && initUpdater(publish, appConfig.sources);
+		[structureID, keys(app.sources).join(', ')].forEach(styledLog);
+
+		live && initUpdater(publish, app.sources);
 
 		return <Root/>;
 	},
 	perf: (count = 100) => { // eslint-disable-line max-statements, no-magic-numbers
-		const baseConfig = config('examples/nested');
+		const baseConfig = config('examples/nested').app;
 		const embedRoot = baseConfig.structure.items.child.items;
 		const childConfig = source;
 
