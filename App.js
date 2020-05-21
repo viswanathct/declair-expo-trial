@@ -102,7 +102,7 @@ const App = () => {
 	logLevel = 1;
 	delay *= 1;
 
-	return Apps.dev('examples/nested');
+	return Apps.dev('dev/dev');
 };
 
 export default App;
