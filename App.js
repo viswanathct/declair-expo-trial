@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 
 import React from 'react';
+import { keys, select } from '@laufire/utils/collection';
 import declair from 'declair/quick';
 import config from './config';
 import { source } from './config/structures/shared/parts';
@@ -40,23 +41,27 @@ const getCollectionMessages = (val) => [
 	},
 ];
 
-const getPublisher = (publish) => {
+const getPublisher = (publish, sources) => {
+	const availableSources = keys(sources);
+	const filterUpdates = (updates) => select(updates, availableSources);
+
 	debug('Initiating publish messages.');
+	debug('Available sources', availableSources);
 
 	return (val = 0) => {
 		const collectionMessages = getCollectionMessages(val);
 
-		publish({
+		publish(filterUpdates({
 			timer: val,
 			collection:
 				collectionMessages[val % collectionMessages.length],
-		});
+		}));
 	};
 };
 
-const initUpdater = (publisher) => {
+const initUpdater = (publisher, sources) => {
 	let epoch = 0;
-	const publish = getPublisher(publisher);
+	const publish = getPublisher(publisher, sources);
 
 	publish();
 	const startTime = new Date();
@@ -68,10 +73,11 @@ const initUpdater = (publisher) => {
 };
 
 const Apps = {
-	dev: (moduleId, live = true) => {
-		const { root: Root, publish } = declair(config(moduleId));
+	dev: (structureId, live = true) => {
+		const appConfig = config(structureId);
+		const { root: Root, publish } = declair(appConfig);
 
-		live && initUpdater(publish);
+		live && initUpdater(publish, appConfig.sources);
 
 		return <Root/>;
 	},
@@ -102,7 +108,7 @@ const App = () => {
 	logLevel = 1;
 	delay *= 1;
 
-	return Apps.dev('dev/dev');
+	return Apps.dev('examples/routed');
 };
 
 export default App;

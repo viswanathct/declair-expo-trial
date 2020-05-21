@@ -1,9 +1,11 @@
-import { map, traverse, result } from '@laufire/utils/collection';
+import { has, keys, map, result,
+	select, traverse } from '@laufire/utils/collection';
 import { rndValue } from '@laufire/utils/random';
 import { peek } from '@laufire/utils/debug';
 
-import sources from './sources';
+import allSources from './sources';
 import structures from './structures';
+import types from './types';
 
 /* Helpers */
 const getRndModuleId = () => {
@@ -16,26 +18,33 @@ const getRndModuleId = () => {
 	return rndValue(moduleList);
 };
 
-const getModule = (moduleId) =>
+const getStructure = (moduleId) =>
 	result(structures, peek(moduleId || getRndModuleId()));
 
+const filterSources = (sources, structure) => {
+	const sourceNames = keys(sources);
+	const dependencies = [];
+	const propsToCheck = ['data', 'target'];
+	const pickDependency = (value, key) => { // eslint-disable-line complexity
+		typeof value === 'string'
+			&& has(sourceNames, value)
+			&& !has(dependencies, value)
+			&& has(propsToCheck, key)
+			&& dependencies.push(value);
+	};
+
+	traverse(structure, pickDependency);
+	traverse(select(sources, dependencies), pickDependency);
+
+	return select(sources, dependencies);
+};
+
 /* Exports */
-const config = (moduleId) => ({
-	types: {
-		element: {
-			style: {
-				backgroundColor: '#ddd',
-				borderWidth: 1,
-			},
-		},
-		text: {
-			style: {
-				fontSize: 12,
-			},
-		},
-	},
-	sources: sources,
-	structure: getModule(moduleId),
-});
+const config = (structureID) => {
+	const structure = getStructure(structureID);
+	const sources = filterSources(allSources, structure);
+
+	return { types, sources, structure };
+};
 
 export default config;

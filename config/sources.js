@@ -1,9 +1,5 @@
 import { colors } from './shared';
-import { select } from '@laufire/utils/collection';
 import { peek } from '@laufire/utils/debug';
-
-/* Config */
-const sourceSelection = [];
 
 /* Exports */
 const sources = {
@@ -82,9 +78,4 @@ const sources = {
 	},
 };
 
-const selectedSources = () =>
-	(sourceSelection.length
-		? select(sources, sourceSelection)
-		: sources);
-
-export default selectedSources();
+export default sources;
