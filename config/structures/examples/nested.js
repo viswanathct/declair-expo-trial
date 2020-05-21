@@ -1,4 +1,4 @@
-import { itemTree } from '../shared/parts';
+import { child } from '../shared/parts';
 
 const nested = {
 	data: {
@@ -10,7 +10,9 @@ const nested = {
 		flexDirection: 'column',
 		width: '100%',
 	},
-	items: itemTree,
+	items: {
+		child,
+	},
 };
 
 export default nested;

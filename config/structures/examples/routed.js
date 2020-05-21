@@ -1,4 +1,4 @@
-import { itemTree } from '../shared/parts';
+import { child } from '../shared/parts';
 
 const routed = {
 	type: 'router',
@@ -17,7 +17,7 @@ const routed = {
 		},
 	},
 	items: {
-		...itemTree,
+		child: child,
 		child1: {
 			style: {
 				backgroundColor: 'yellow',

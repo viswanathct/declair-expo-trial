@@ -1,4 +1,5 @@
 const nested = {
+	type: 'element',
 	items: {
 		level1: {
 			items: {

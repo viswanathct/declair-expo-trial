@@ -1,4 +1,5 @@
 const simple = {
+	type: 'element',
 	items: {
 		text: {
 			type: 'input',

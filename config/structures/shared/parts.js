@@ -70,24 +70,22 @@ const source = {
 	},
 };
 
-const itemTree = {
-	child: {
-		label: 'Custom label',
-		style: {
-			borderColor: 'purple',
-			flex: 1,
-			flexDirection: 'column',
-			justifyContent: 'flex-start',
-		},
-		items: {
-			embedded,
-			input,
-			button,
-			source,
-			form,
-			list,
-		},
+const child = {
+	label: 'Custom label',
+	style: {
+		borderColor: 'purple',
+		flex: 1,
+		flexDirection: 'column',
+		justifyContent: 'flex-start',
+	},
+	items: {
+		embedded,
+		input,
+		button,
+		source,
+		form,
+		list,
 	},
 };
 
-export { itemTree, source };
+export { child, source };

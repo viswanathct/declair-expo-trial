@@ -6,7 +6,7 @@ const nested = {
 			type: 'text',
 			data: 'Main Form does the job. Check the console.',
 		},
-		create: {
+		subForm: {
 			type: 'form',
 			data: 'buffer',
 			items: {
