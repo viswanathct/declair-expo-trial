@@ -79,7 +79,7 @@ const initUpdater = (publisher, sources) => {
 const Apps = {
 	dev: (structureId, live = true) => {
 		const { app, structureID } = config(structureId);
-		const { root: Root, publish } = declair(app);
+		const { Root, publish } = declair(app);
 
 		[structureID, keys(app.sources).join(', ')].forEach(styledLog);
 
@@ -96,7 +96,7 @@ const Apps = {
 			embedRoot[`embedding${ i }`] = childConfig;
 
 		const start = performance.now();
-		const { root: Root, publish } = declair(app);
+		const { Root, publish } = declair(app);
 
 		initUpdater(publish, app.sources);
 
@@ -115,7 +115,7 @@ const App = () => {
 	logLevel = 1;
 	delay *= 1;
 
-	return Apps.perf();
+	return Apps.dev('examples/routed');
 };
 
 export default App;
