@@ -88,18 +88,19 @@ const Apps = {
 		return <Root/>;
 	},
 	perf: (count = 100) => { // eslint-disable-line max-statements, no-magic-numbers
-		const baseConfig = config('examples/nested').app;
-		const embedRoot = baseConfig.structure.items.child.items;
+		const { app } = config('examples/nested');
+		const embedRoot = app.structure.items.child.items;
 		const childConfig = source;
 
 		for(let i = 0; i < count; ++i)
 			embedRoot[`embedding${ i }`] = childConfig;
 
 		const start = performance.now();
-		const { root: Root, publish } = declair(baseConfig);
+		const { root: Root, publish } = declair(app);
+
+		initUpdater(publish, app.sources);
 
 		console.log('Config', performance.now() - start);
-		initUpdater(publish);
 
 		const root = <Root/>;
 
@@ -114,7 +115,7 @@ const App = () => {
 	logLevel = 1;
 	delay *= 1;
 
-	return Apps.dev('examples/routed');
+	return Apps.perf();
 };
 
 export default App;
