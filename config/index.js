@@ -20,12 +20,10 @@ const getRndModuleId = () => {
 const filterSources = (sources, structure) => {
 	const sourceNames = keys(sources);
 	const dependencies = [];
-	const propsToCheck = ['data', 'target'];
-	const pickDependency = (value, key) => { // eslint-disable-line complexity
+	const pickDependency = (value) => { // eslint-disable-line complexity
 		typeof value === 'string'
 			&& has(sourceNames, value)
 			&& !has(dependencies, value)
-			&& has(propsToCheck, key)
 			&& dependencies.push(value);
 	};
 
