@@ -3,12 +3,6 @@ import { peek } from '@laufire/utils/debug';
 
 /* Exports */
 const sources = {
-	buffer: {
-		type: 'value',
-		data: {
-			color: 'Any type goes...!',
-		},
-	},
 	timer: {
 		type: 'value',
 		data: 0,
@@ -23,6 +17,12 @@ const sources = {
 		type: 'transformation',
 		data: 'timer',
 		transform: () => new Date().toISOString(),
+	},
+	buffer: {
+		type: 'value',
+		data: {
+			color: '1',
+		},
 	},
 	debug: {
 		type: 'transformation',
@@ -75,6 +75,14 @@ const sources = {
 	proxy: {
 		type: 'collection',
 		data: 'collection',
+	},
+	nested: {
+		type: 'value',
+		data: {
+			sub: {
+				color: '1',
+			},
+		},
 	},
 };
 

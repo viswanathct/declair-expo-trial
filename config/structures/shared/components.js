@@ -43,6 +43,19 @@ const displayList = {
 	},
 };
 
+const nestedDisplay = {
+	data: 'nested',
+	items: {
+		sub: {
+			items: {
+				color: {
+					type: 'text',
+				},
+			},
+		},
+	},
+};
+
 const resetTimerButton = {
 	type: 'button',
 	target: 'timer',
@@ -76,6 +89,7 @@ const updateList = {
 export {
 	addItemForm,
 	displayList,
+	nestedDisplay,
 	updateList,
 	resetTimerButton,
 };

@@ -15,6 +15,9 @@ const form = {
 	type: 'form',
 	data: {
 		action: 'create',
+		data: {
+			color: 0,
+		},
 	},
 	target: 'collection',
 	items: {

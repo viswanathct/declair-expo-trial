@@ -1,38 +1,50 @@
+import { nestedDisplay } from '../shared/components';
+
 const nested = {
-	type: 'form',
-	target: 'debug',
 	items: {
-		header: {
-			type: 'text',
-			data: 'Main Form does the job. Check the console.',
-		},
-		subForm: {
+		mainForm: {
 			type: 'form',
-			data: 'buffer',
+			data: 'nested',
+			target: 'nested',
 			items: {
-				header: {
-					type: 'text',
-					data: 'Sub Form is just a buffer.',
-				},
-				color: {
-					type: 'input',
+				sub: {
+					type: 'form',
+					data: {
+						color: 'Any change here reflects'
+						+ ' only after draft and submit are clicked.',
+					},
+					items: {
+						header: {
+							type: 'text',
+							data: 'Sub Form is just a buffer.',
+						},
+						color: {
+							type: 'input',
+						},
+						submit: {
+							type: 'button',
+							label: 'Draft',
+							data: {
+								action: 'submit',
+							},
+						},
+					},
 				},
 				submit: {
 					type: 'button',
-					label: 'Draft',
+					label: 'Submit',
 					data: {
 						action: 'submit',
 					},
 				},
+				footer: {
+					type: 'text',
+					data: 'Main Form does the job of'
+						+ ' updating the display below.',
+				},
 			},
 		},
-		submit: {
-			type: 'button',
-			label: 'Submit',
-			data: {
-				action: 'submit',
-			},
-		},
+		nestedDisplay: nestedDisplay,
 	},
 };
 
