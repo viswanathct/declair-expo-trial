@@ -1,12 +1,12 @@
+import { list as displayList } from './parts';
+
 const addItemForm = {
 	type: 'form',
-	data: {
-		action: 'create',
-		data: {
-			color: 1,
-		},
-	},
 	target: 'collection',
+	action: 'create',
+	data: {
+		color: 1,
+	},
 	items: {
 		color: {
 			type: 'input',
@@ -14,31 +14,7 @@ const addItemForm = {
 		submit: {
 			type: 'button',
 			label: 'Add Item',
-			data: {
-				action: 'submit',
-			},
-		},
-	},
-};
-
-const displayList = {
-	type: 'list',
-	data: 'collection',
-	style: {
-		width: '100%',
-	},
-	item: {
-		items: {
-			delete: {
-				type: 'button',
-				label: 'X',
-				data: {
-					action: 'delete',
-				},
-			},
-			color: {
-				type: 'text',
-			},
+			action: 'submit',
 		},
 	},
 };
@@ -71,9 +47,7 @@ const nestedForm = {
 		submit: {
 			type: 'button',
 			label: 'Submit',
-			data: {
-				action: 'submit',
-			},
+			action: 'submit',
 		},
 	},
 };
@@ -90,9 +64,7 @@ const updateList = {
 	data: 'collection',
 	item: {
 		type: 'form',
-		data: {
-			action: 'update',
-		},
+		action: 'update',
 		items: {
 			color: {
 				type: 'input',
@@ -100,9 +72,7 @@ const updateList = {
 			submit: {
 				type: 'button',
 				label: 'Update Item',
-				data: {
-					action: 'submit',
-				},
+				action: 'submit',
 			},
 		},
 	},

@@ -13,13 +13,11 @@ const input = {
 
 const form = {
 	type: 'form',
-	data: {
-		action: 'create',
-		data: {
-			color: 0,
-		},
-	},
 	target: 'collection',
+	action: 'create',
+	data: {
+		color: 0,
+	},
 	items: {
 		color: {
 			type: 'input',
@@ -27,28 +25,7 @@ const form = {
 		submit: {
 			type: 'button',
 			label: 'Add Item',
-			data: {
-				action: 'submit',
-			},
-		},
-	},
-};
-
-const list = {
-	type: 'list',
-	data: 'collection',
-	item: {
-		items: {
-			delete: {
-				type: 'button',
-				label: 'X',
-				data: {
-					action: 'delete',
-				},
-			},
-			color: {
-				type: 'text',
-			},
+			action: 'submit',
 		},
 	},
 };
@@ -61,6 +38,23 @@ const button = {
 };
 
 /* Exports */
+const list = {
+	type: 'list',
+	data: 'collection',
+	item: {
+		items: {
+			delete: {
+				type: 'button',
+				label: 'X',
+				action: 'delete',
+			},
+			color: {
+				type: 'text',
+			},
+		},
+	},
+};
+
 const source = {
 	type: 'text',
 	data: 'timer',
@@ -91,4 +85,4 @@ const child = {
 	},
 };
 
-export { child, source };
+export { child, source, list };

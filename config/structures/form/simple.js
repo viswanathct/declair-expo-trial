@@ -10,9 +10,7 @@ const simple = {
 				submit: {
 					type: 'button',
 					label: 'Update Value',
-					data: {
-						action: 'submit',
-					},
+					action: 'submit',
 				},
 			},
 		},

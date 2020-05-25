@@ -24,18 +24,14 @@ const withinForm = {
 						submit: {
 							type: 'button',
 							label: 'Draft',
-							data: {
-								action: 'submit',
-							},
+							action: 'submit',
 						},
 					},
 				},
 				submit: {
 					type: 'button',
 					label: 'Submit',
-					data: {
-						action: 'submit',
-					},
+					action: 'submit',
 				},
 				footer: {
 					type: 'text',

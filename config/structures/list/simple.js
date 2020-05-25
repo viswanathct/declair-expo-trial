@@ -1,20 +1,3 @@
-const simple = {
-	type: 'list',
-	data: 'collection',
-	item: {
-		items: {
-			delete: {
-				type: 'button',
-				label: 'X',
-				data: {
-					action: 'delete',
-				},
-			},
-			color: {
-				type: 'input',
-			},
-		},
-	},
-};
+import { displayList as simple } from '../shared/components';
 
 export default simple;
