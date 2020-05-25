@@ -5,10 +5,12 @@ import { keys, select } from '@laufire/utils/collection';
 import declair from 'declair/quick';
 import config from './config';
 import { source } from './config/structures/shared/parts';
+import mockHTTP from './mocks/http';
 
-/* State */
+/* Config */
 let logLevel = 0;
 let delay = 1000;
+const mockURLBase = 'http://test/';
 
 /* Helpers */
 const debug = (...args) =>
@@ -17,6 +19,8 @@ const debug = (...args) =>
 const setupMocks = () => {
 	if(!window.performance)
 		window.performance = { now: () => new Date() };
+
+	mockHTTP(mockURLBase);
 };
 
 const styledLog = (x) => console.log(`%c ${ x }`,

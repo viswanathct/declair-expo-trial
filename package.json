@@ -12,6 +12,7 @@
     "@laufire/utils": "^2.5.1",
     "declair": "0.0.26",
     "expo": "~37.0.3",
+    "fetch-mock": "^9.10.1",
     "react": "^16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "^0.61.4",
