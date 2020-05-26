@@ -18,17 +18,21 @@ const getParams = (url) => {
 	return params;
 };
 
-const mock = (baseURL, mockers) =>
-	fetchMock.mock(match(baseURL), (urlString, opts = defaultOpts) => {
-		const url = new URL(urlString);
-		const params = getParams(url);
-		const path = url.pathname.replace('^/', '');
-		const method = opts.method.toLowerCase();
-		const mockPath = `${ path }/${ method }`;
+const mock = (
+	baseURL, mockers, mockOptions
+) =>
+	fetchMock.mock(
+		match(baseURL), (urlString, opts = defaultOpts) => {
+			const url = new URL(urlString);
+			const params = getParams(url);
+			const path = url.pathname.replace('^/', '');
+			const method = opts.method.toLowerCase();
+			const mockPath = `${ path }/${ method }`;
 
-		return result(mockers, mockPath)({
-			opts, params, url,
-		});
-	});
+			return result(mockers, mockPath)({
+				opts, params, url,
+			});
+		}, mockOptions
+	);
 
 export default mock;
