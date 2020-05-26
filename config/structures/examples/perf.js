@@ -27,7 +27,7 @@ const perf = {
 
 const state = { i: 0 };
 
-while(state.i < 1000) {
+while(state.i < 1000) { // eslint-disable-line no-magic-numbers
 	perf.items.dynamic.items[`child${ ++state.i }`] = {
 		type: 'text',
 		data: state.i,
