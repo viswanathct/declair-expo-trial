@@ -84,6 +84,10 @@ const sources = {
 			},
 		},
 	},
+	resource: {
+		type: 'resource',
+		url: 'http://test/simple',
+	},
 };
 
 export default sources;
