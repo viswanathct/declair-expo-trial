@@ -1,6 +1,6 @@
 const { stringify } = JSON;
 
-import { merge } from '@laufire/utils/collection';
+import { fill } from '@laufire/utils/collection';
 
 const defaults = {
 	status: 200,
@@ -20,7 +20,7 @@ const standardizeResponse = (cb) => (...args) => {
 	const res = cb(...args);
 	const type = typeof res;
 
-	return merge(responseProcessors[type](res), defaults);
+	return fill(responseProcessors[type](res), defaults);
 };
 
 export {
