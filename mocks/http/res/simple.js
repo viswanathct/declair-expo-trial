@@ -1,5 +1,7 @@
+import { standardizeResponse } from './shared';
+
 const simple = {
-	get: ({ params }) => ({ status: 200, body: params }),
+	get: standardizeResponse(() => `Server time: ${ new Date().toISOString() }`),
 };
 
 export default simple;
