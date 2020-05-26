@@ -9,7 +9,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@laufire/utils": "^2.5.1",
+    "@laufire/utils": "^2.5.3",
     "declair": "0.0.26",
     "expo": "~37.0.3",
     "fetch-mock": "^9.10.1",
