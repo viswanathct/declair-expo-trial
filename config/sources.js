@@ -87,6 +87,9 @@ const sources = {
 	resource: {
 		type: 'resource',
 		url: 'http://test/simple',
+		params: {
+			timer: 'timer',
+		},
 	},
 };
 
