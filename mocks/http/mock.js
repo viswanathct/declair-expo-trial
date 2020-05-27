@@ -1,38 +1,55 @@
-import fetchMock from 'fetch-mock';
 import { result } from '@laufire/utils/collection';
+import parseURL from 'url-parse';
+import { sleep } from '@laufire/utils/debug';
 
 /* Data */
-const defaultOpts = {
-	method: 'GET',
+const defaults = {
+	opts: {
+		method: 'GET',
+	},
+	mockOpts: {
+		delay: 0,
+	},
 };
 
 /* Helpers */
 const match = (matcher) =>
 	(string) => !string.search(matcher);
 
-const getParams = (url) => {
-	const params = {};
+const response = async (data, mockOptions) => {
+	await sleep(mockOptions.delay);
 
-	url.searchParams.forEach((value, key) => (params[key] = value));
-
-	return params;
+	return {
+		status: data.status,
+		json: async () => JSON.parse(data.body), // eslint-disable-line require-await
+	};
 };
+
+const mockedFetch = (mockers, mockOptions = defaults.mockOpts) =>
+	(url, opts = defaults.opts) => {
+		const parsed = parseURL(url, true);
+		const path = parsed.pathname.replace('^/', '');
+		const method = opts.method.toLowerCase();
+		const mockPath = `${ path }/${ method }`;
+
+		return response(result(mockers, mockPath)({
+			url, opts, parsed,
+		}), mockOptions);
+	};
 
 const mock = (
 	baseURL, mockers, mockOptions
-) =>
-	fetchMock.mock(
-		match(baseURL), (urlString, opts = defaultOpts) => {
-			const url = new URL(urlString);
-			const params = getParams(url);
-			const path = url.pathname.replace('^/', '');
-			const method = opts.method.toLowerCase();
-			const mockPath = `${ path }/${ method }`;
+) => {
+	const matcher = match(baseURL);
+	const { fetch } = window;
+	const mocked = mockedFetch(mockers, mockOptions);
 
-			return result(mockers, mockPath)({
-				opts, params, url,
-			});
-		}, mockOptions
-	);
+	window.fetch = (url, ...rest) => {
+		if(matcher(url))
+			return mocked(url, ...rest);
+
+		return fetch(url, ...rest);
+	};
+};
 
 export default mock;

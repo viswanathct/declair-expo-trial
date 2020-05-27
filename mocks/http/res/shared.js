@@ -16,6 +16,14 @@ const responseProcessors = {
 	}),
 };
 
+/* Exports */
+const int = (x) => parseInt(x, 10);
+
+const status = {
+	success: 200,
+	error: 500,
+};
+
 const standardizeResponse = (cb) => (...args) => {
 	const res = cb(...args);
 	const type = typeof res;
@@ -24,5 +32,5 @@ const standardizeResponse = (cb) => (...args) => {
 };
 
 export {
-	standardizeResponse,
+	int, standardizeResponse, status,
 };

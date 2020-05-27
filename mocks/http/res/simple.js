@@ -1,9 +1,15 @@
-import { standardizeResponse } from './shared';
+import { int, standardizeResponse, status } from './shared';
 
+/* Helpers */
+const errorFrequency = 3;
+
+/* Exports */
 const simple = {
-	get: standardizeResponse(({ params }) => ({
-		status: parseInt(params.timer, 10) % 3 ? 200 : 500, // eslint-disable-line no-magic-numbers
-		body: `Request #${ params.timer } @ ${ new Date().toISOString() }`,
+	get: standardizeResponse(({ parsed }) => ({
+		status: int(parsed.query.timer) % errorFrequency
+			? status.success
+			: status.error,
+		body: `Request #${ parsed.query.timer } @ ${ new Date().toISOString() }`,
 	})),
 };
 
