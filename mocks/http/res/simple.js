@@ -9,7 +9,9 @@ const simple = {
 		status: int(parsed.query.timer) % errorFrequency
 			? status.success
 			: status.error,
-		body: `Request #${ parsed.query.timer } @ ${ new Date().toISOString() }`,
+		body: {
+			message: `Request #${ parsed.query.timer } @ ${ new Date().toISOString() }`,
+		},
 	})),
 };
 

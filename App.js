@@ -119,7 +119,7 @@ const App = () => {
 	logLevel = 1;
 	delay *= 1;
 
-	return Apps.dev('examples/action');
+	return Apps.dev('sources/resource');
 };
 
 export default App;

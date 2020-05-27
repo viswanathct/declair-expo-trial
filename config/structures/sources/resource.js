@@ -1,6 +1,10 @@
 const resource = {
-	type: 'text',
 	data: 'resource',
+	items: {
+		message: {
+			type: 'text',
+		},
+	},
 };
 
 export default resource;
