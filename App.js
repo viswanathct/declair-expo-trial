@@ -58,12 +58,14 @@ const getPublisher = (publish, sources) => {
 
 	return (val = 0) => {
 		const collectionMessages = getCollectionMessages(val);
-
-		publish(filterUpdates({
+		const updates = filterUpdates({
 			timer: val,
 			collection:
 				collectionMessages[val % collectionMessages.length],
-		}));
+		});
+
+		debug(updates);
+		publish(updates);
 	};
 };
 
