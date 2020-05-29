@@ -1,3 +1,12 @@
+const styles = {
+	big: {
+		fontSize: 100,
+		fontStyle: 'italic',
+		borderWidth: 3,
+	},
+};
+
+/* Exports */
 const embedded = {
 	type: 'text',
 	data: 'Some text as embedded data!',
@@ -60,9 +69,7 @@ const source = {
 	style: {
 		color: 'color',
 		borderColor: 'input',
-		fontSize: 100,
-		fontStyle: 'italic',
-		borderWidth: 3,
+		...styles.big,
 	},
 };
 
@@ -171,6 +178,33 @@ const updateList = {
 	},
 };
 
+const blue = {
+	type: 'text',
+	data: 'blue',
+	style: {
+		color: 'blue',
+		...styles.big,
+	},
+};
+
+const green = {
+	type: 'text',
+	data: 'green',
+	style: {
+		color: 'green',
+		...styles.big,
+	},
+};
+
+const red = {
+	type: 'text',
+	data: 'red',
+	style: {
+		color: 'red',
+		...styles.big,
+	},
+};
+
 export {
 	embedded,
 	input,
@@ -185,4 +219,5 @@ export {
 	resetTimerButton,
 	resource,
 	updateList,
+	blue, green, red,
 };

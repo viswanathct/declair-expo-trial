@@ -1,6 +1,7 @@
+import fork from './fork';
 import input from './input';
 import text from './text';
 
 export default {
-	input, text,
+	fork, input, text,
 };
