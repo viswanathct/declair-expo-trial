@@ -1,9 +1,15 @@
+import { form, collection, input } from '../../sources';
 import { addItemForm, displayList } from '../shared/components';
 
 const withAction = {
-	items: {
-		addItemForm,
-		displayList,
+	sources: {
+		form, collection, input,
+	},
+	structure: {
+		items: {
+			addItemForm,
+			displayList,
+		},
 	},
 };
 

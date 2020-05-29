@@ -1,3 +1,4 @@
+import { collection, form, timer } from '../../sources';
 import { addItemForm, displayList,
 	resetTimerButton, updateList } from '../shared/components';
 
@@ -11,12 +12,17 @@ const header = {
 };
 
 const dev = {
-	items: {
-		resetTimerButton,
-		addItemForm,
-		header,
-		updateList,
-		displayList,
+	sources: {
+		collection, form, timer,
+	},
+	structure: {
+		items: {
+			resetTimerButton,
+			addItemForm,
+			header,
+			updateList,
+			displayList,
+		},
 	},
 };
 

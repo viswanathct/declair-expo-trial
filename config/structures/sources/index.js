@@ -3,8 +3,7 @@ import resource from './resource';
 
 /* Data */
 const sources = {
-	branch,
-	resource,
+	branch, resource,
 };
 
 export default sources;

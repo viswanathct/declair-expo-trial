@@ -1,23 +1,26 @@
-const branch = {
-	items: {
-		resource: {
-			data: 'resource',
-			items: {
-				message: {
-					type: 'text',
+import { branch as sBranch, resource as sResource, timer } from '../../sources';
+import { resource as cResource } from '../shared/components';
+
+const app = {
+	sources: {
+		branch: sBranch,
+		resource: sResource,
+		timer: timer,
+	},
+	structure: {
+		items: {
+			resource: cResource,
+			error: {
+				data: 'branch',
+				style: {
+					backgroundColor: 'red',
 				},
-			},
-		},
-		error: {
-			data: 'branch',
-			style: {
-				backgroundColor: 'red',
-			},
-			items: {
-				message: {
-					type: 'text',
-					style: {
-						color: 'white',
+				items: {
+					message: {
+						type: 'text',
+						style: {
+							color: 'white',
+						},
 					},
 				},
 			},
@@ -25,4 +28,4 @@ const branch = {
 	},
 };
 
-export default branch;
+export default app;

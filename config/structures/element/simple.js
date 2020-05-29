@@ -1,9 +1,16 @@
+import { timer } from '../../sources';
+
 const simple = {
-	type: 'element',
-	items: {
-		text: {
-			type: 'input',
-			data: 'timer',
+	sources: {
+		timer,
+	},
+	structure: {
+		type: 'element',
+		items: {
+			text: {
+				type: 'input',
+				data: 'timer',
+			},
 		},
 	},
 };

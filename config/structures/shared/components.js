@@ -59,6 +59,15 @@ const resetTimerButton = {
 	label: 'Reset Timer Button',
 };
 
+const resource = {
+	data: 'resource',
+	items: {
+		message: {
+			type: 'text',
+		},
+	},
+};
+
 const updateList = {
 	type: 'list',
 	data: 'collection',
@@ -83,6 +92,7 @@ export {
 	displayList,
 	nestedDisplay,
 	nestedForm,
-	updateList,
 	resetTimerButton,
+	resource,
+	updateList,
 };

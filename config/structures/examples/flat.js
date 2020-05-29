@@ -1,9 +1,15 @@
+import { color, style, timer } from '../../sources';
 const flat = {
-	type: 'text',
-	data: 'timer',
-	style: {
-		color: 'color',
-		fontSize: 100,
+	sources: {
+		color, style, timer,
+	},
+	structure: {
+		type: 'text',
+		data: 'timer',
+		style: {
+			color: 'color',
+			fontSize: 100,
+		},
 	},
 };
 

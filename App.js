@@ -121,7 +121,7 @@ const App = () => {
 	logLevel = 1;
 	delay *= 1;
 
-	return Apps.dev('sources/branch');
+	return Apps.dev();
 };
 
 export default App;
