@@ -4,7 +4,7 @@ import React from 'react';
 import { keys, select } from '@laufire/utils/collection';
 import declair from 'declair/quick';
 import config from './config';
-import { source } from './config/structures/shared/parts';
+import { source } from './config/structures/shared/components';
 import mockHTTP from './mocks/http';
 
 /* Config */
