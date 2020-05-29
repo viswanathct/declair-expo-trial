@@ -1,5 +1,5 @@
 import { collection, color, form, input, style, timer } from '../../sources';
-import { child } from '../shared/components';
+import { child } from '../../structures';
 
 const nested = {
 	sources: {

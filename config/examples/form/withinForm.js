@@ -1,5 +1,5 @@
 import { form, nested as sNested } from '../../sources';
-import { nestedDisplay } from '../shared/components';
+import { nestedDisplay } from '../../structures';
 
 const withinForm = {
 	sources: {

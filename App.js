@@ -4,7 +4,7 @@ import React from 'react';
 import { keys, select } from '@laufire/utils/collection';
 import declair from 'declair/quick';
 import config from './config';
-import { source } from './config/structures/shared/components';
+import { source } from './config/structures';
 import mockHTTP from './mocks/http';
 
 /* Config */
@@ -83,11 +83,11 @@ const initUpdater = (publisher, sources) => {
 };
 
 const Apps = {
-	dev: (structureId, live = true) => {
-		const { app, structureID } = config(structureId);
+	dev: (example, live = true) => {
+		const { app, exampleID } = config(example);
 		const { Root, publish } = declair(app);
 
-		[structureID, keys(app.sources).join(', ')].forEach(styledLog);
+		[exampleID, keys(app.sources).join(', ')].forEach(styledLog);
 
 		live && initUpdater(publish, app.sources);
 

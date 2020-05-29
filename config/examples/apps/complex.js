@@ -1,6 +1,6 @@
 import { collection, form, timer } from '../../sources';
 import { addItemForm, displayList,
-	resetTimerButton, updateList } from '../shared/components';
+	resetTimerButton, updateList } from '../../structures';
 
 const header = {
 	type: 'text',

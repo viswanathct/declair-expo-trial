@@ -1,5 +1,5 @@
 import { form, collection, input } from '../../sources';
-import { addItemForm, displayList } from '../shared/components';
+import { addItemForm, displayList } from '../../structures';
 
 const withAction = {
 	sources: {

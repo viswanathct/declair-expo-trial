@@ -1,15 +1,15 @@
 import components from './components';
 import dev from './dev';
 import element from './element';
-import examples from './examples';
+import apps from './apps';
 import form from './form';
 import list from './list';
 import sources from './sources';
 
 /* Data */
 const modules = {
-	components, dev,
-	element, examples,
+	apps, components,
+	dev, element,
 	form, list, sources,
 };
 

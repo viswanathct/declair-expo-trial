@@ -1,5 +1,5 @@
 import { branch as sBranch, resource as sResource, timer } from '../../sources';
-import { resource as cResource } from '../shared/components';
+import { resource as cResource } from '../../structures';
 
 const app = {
 	sources: {

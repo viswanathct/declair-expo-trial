@@ -1,5 +1,5 @@
 import { collection } from '../../sources';
-import { displayList } from '../shared/components';
+import { displayList } from '../../structures';
 
 const simple = {
 	sources: {

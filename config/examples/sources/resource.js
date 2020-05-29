@@ -1,5 +1,5 @@
 import { resource as sResource, timer } from '../../sources';
-import { resource as cResource } from '../shared/components';
+import { resource as cResource } from '../../structures';
 
 const resource = {
 	sources: {
