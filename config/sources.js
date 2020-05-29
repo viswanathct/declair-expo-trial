@@ -91,6 +91,11 @@ const sources = {
 			timer: 'timer',
 		},
 	},
+	branch: {
+		type: 'branch',
+		data: 'resource',
+		branch: 'error',
+	},
 };
 
 export default sources;
