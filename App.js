@@ -23,7 +23,7 @@ const setupMocks = () => {
 	mockHTTP(mockURLBase);
 };
 
-const styledLog = (x) => console.log(`%c ${ x }`,
+const styledLog = (x) => console.log(`%c${ x }`,
 	'background: #222; color: #bada55; font-size: 20pt') ;
 
 const initDevEnv = () => {
@@ -87,7 +87,8 @@ const Apps = {
 		const { app, exampleID } = config(example);
 		const { Root, publish } = declair(app);
 
-		[exampleID, keys(app.sources).join(', ')].forEach(styledLog);
+		styledLog(`App: ${ exampleID }\n`
+			+ `Sources: ${ keys(app.sources).join(', ') }`);
 
 		live && initUpdater(publish, app.sources);
 
@@ -121,7 +122,8 @@ const App = () => {
 	logLevel = 1;
 	delay *= 1;
 
-	return Apps.dev('components/choice');
+	return Apps.dev('components/fork');
+	// return Apps.dev('apps/nested');
 };
 
 export default App;

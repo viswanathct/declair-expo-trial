@@ -3,7 +3,7 @@ import { blue, green, red } from '../../structures';
 import { colors } from '../../shared';
 
 /* Exports */
-const fork = {
+const choice = {
 	sources: {
 		timer: timer,
 		choice: {
@@ -21,4 +21,4 @@ const fork = {
 	},
 };
 
-export default fork;
+export default choice;

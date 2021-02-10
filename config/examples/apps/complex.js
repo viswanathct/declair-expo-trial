@@ -11,7 +11,7 @@ const header = {
 	},
 };
 
-const dev = {
+const complex = {
 	sources: {
 		collection, form, timer,
 	},
@@ -26,4 +26,4 @@ const dev = {
 	},
 };
 
-export default dev;
+export default complex;

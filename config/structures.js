@@ -147,7 +147,7 @@ const resetTimerButton = {
 	type: 'button',
 	target: 'timer',
 	data: 0,
-	label: 'Reset Timer Button',
+	label: 'Reset Timer',
 };
 
 const resource = {
