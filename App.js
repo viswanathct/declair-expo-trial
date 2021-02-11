@@ -122,8 +122,7 @@ const App = () => {
 	logLevel = 1;
 	delay *= 1;
 
-	return Apps.dev('components/fork');
-	// return Apps.dev('apps/complex');
+	return Apps.dev('components/dynamic');
 };
 
 export default App;

@@ -3,18 +3,18 @@ import { timer } from '../../sources';
 const modulator = 2;
 
 /* Exports */
-const fork = {
+const optional = {
 	sources: {
 		timer: timer,
-		fork: {
+		optional: {
 			type: 'transformation',
 			data: 'timer',
 			transform: (time) => (time % modulator ? 'defined' : undefined),
 		},
 	},
 	structure: {
-		type: 'fork',
-		data: 'fork',
+		type: 'optional',
+		data: 'optional',
 		items: {
 			present: {
 				type: 'text',
@@ -24,4 +24,4 @@ const fork = {
 	},
 };
 
-export default fork;
+export default optional;

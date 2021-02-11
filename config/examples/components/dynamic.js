@@ -3,22 +3,22 @@ import { blue, green, red } from '../../structures';
 import { colors } from '../../shared';
 
 /* Exports */
-const choice = {
+const dynamic = {
 	sources: {
 		timer: timer,
-		choice: {
+		dynamic: {
 			type: 'transformation',
 			data: 'timer',
 			transform: (value) => colors[value % colors.length],
 		},
 	},
 	structure: {
-		type: 'choice',
-		data: 'choice',
+		type: 'dynamic',
+		data: 'dynamic',
 		items: {
 			red, green, blue,
 		},
 	},
 };
 
-export default choice;
+export default dynamic;
