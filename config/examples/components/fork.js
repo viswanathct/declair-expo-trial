@@ -1,5 +1,4 @@
 import { timer } from '../../sources';
-import { red, green } from '../../structures';
 
 const modulator = 2;
 
@@ -17,8 +16,10 @@ const fork = {
 		type: 'fork',
 		data: 'fork',
 		items: {
-			yes: green,
-			no: red,
+			present: {
+				type: 'text',
+				data: 'present',
+			},
 		},
 	},
 };

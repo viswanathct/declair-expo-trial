@@ -123,7 +123,7 @@ const App = () => {
 	delay *= 1;
 
 	return Apps.dev('components/fork');
-	// return Apps.dev('apps/nested');
+	// return Apps.dev('apps/complex');
 };
 
 export default App;
