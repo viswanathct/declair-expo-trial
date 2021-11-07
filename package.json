@@ -8,6 +8,18 @@
     "eject": "expo eject",
     "lint": "eslint ."
   },
+  "engines": {
+    "node": ">=10.23.3"
+  },
+  "engineStrict": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/viswanathct/declair-expo-trial"
+  },
+  "keywords": [],
+  "author": "Viswanath. Ct",
+  "license": "ISC",
+  "homepage": "",
   "dependencies": {
     "@laufire/utils": "^2.5.3",
     "declair": "0.0.28",
