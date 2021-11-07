@@ -95,7 +95,7 @@ const Apps = {
 		return <Root/>;
 	},
 	perf: (count = 100) => { // eslint-disable-line max-statements, no-magic-numbers
-		const { app } = config('examples/nested');
+		const { app } = config('apps/nested');
 		const embedRoot = app.structure.items.child.items;
 		const childConfig = source;
 
@@ -122,7 +122,7 @@ const App = () => {
 	logLevel = 1;
 	delay *= 1;
 
-	return Apps.dev('components/dynamic');
+	return Apps.perf();
 };
 
 export default App;
